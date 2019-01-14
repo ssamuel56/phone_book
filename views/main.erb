@@ -1,0 +1,33 @@
+<h1>Your Contacts</h1>
+
+<button type="button" name="add" onclick="addContact()">Add Contact</button>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Number</th>
+    <th>address</th>
+    <th>Comment</th>
+  </tr>
+</table>
+
+<script>
+
+  let table = document.querySelector("table");
+
+  function addContact() {
+    let tableRow = document.createElement("tr");
+
+    [1, 2, 3, 4].forEach(function(i) {
+      let tableHeader = document.createElement("th");
+      let input = document.createElement("input")
+      tableHeader.appendChild(input)
+      tableRow.appendChild(tableHeader);
+    });
+
+    tableRow.appendChild(document.createElement('button'))
+
+    table.appendChild(tableRow);
+  };
+
+</script>
