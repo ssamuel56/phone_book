@@ -14,9 +14,11 @@
 <script>
 
   let table = document.querySelector("table");
+  let counter = 0;
 
   function addContact() {
     let tableRow = document.createElement("tr");
+    tableRow.id = "table" + counter;
 
     [1, 2, 3, 4].forEach(function(i) {
       let tableHeader = document.createElement("th");
@@ -25,7 +27,13 @@
       tableRow.appendChild(tableHeader);
     });
 
-    tableRow.appendChild(document.createElement('button'))
+    let deleteButton = document.createElement('button')
+    deleteButton.innerHTML = "X";
+    deleteButton.onclick = function(){
+      tableRow.parentNode.removeChild(tableRow)
+    };
+    tableRow.appendChild(deleteButton);
+    counter++;
 
     table.appendChild(tableRow);
   };
