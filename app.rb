@@ -13,9 +13,12 @@ post '/login' do
   if temp_user_check && temp_user_pass_check
     redirect '/main'
   else
-    redirect '/'
+    redirect '/failed'
   end
-  
+end
+
+get '/failed' do
+  erb :failed
 end
 
 get '/main' do
