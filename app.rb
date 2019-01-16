@@ -1,4 +1,5 @@
 require 'sinatra'
+require_relative 'users.rb'
 
 get '/' do
   erb :landing
