@@ -1,6 +1,6 @@
 require 'bcrypt'
 
-def check_user_credentials(username, password)
+def check_user_password(password)
 
 
 
