@@ -1,7 +1,6 @@
 require 'bcrypt'
 
-def check_user_password(password)
-
-
-
+def create_hashed_password(password)
+  password = BCrypt::Password.create(password)
+  return password
 end
