@@ -4,3 +4,7 @@ def create_hashed_password(password)
   password = BCrypt::Password.create(password)
   return password
 end
+
+def password_verification(hashed_password, password)
+  BCrypt::Password.new(hashed_password) == password
+end
