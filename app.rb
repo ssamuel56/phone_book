@@ -26,3 +26,7 @@ end
 get '/main' do
   erb :main
 end
+
+post '/add' do
+  p params
+end

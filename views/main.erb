@@ -2,40 +2,21 @@
 
 <button type="button" name="add" onclick="addContact()">Add Contact</button>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Number</th>
-    <th>address</th>
-    <th>Comment</th>
-  </tr>
-</table>
 
-<script>
+<form class="" action="/add" method="post">
 
-  let table = document.querySelector("table");
-  let counter = 0;
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>address</th>
+      <th>Comment</th>
+    </tr>
+  </table>
 
-  function addContact() {
-    let tableRow = document.createElement("tr");
-    tableRow.id = "table" + counter;
+<input type="submit" name="" value="submit">
+</form>
 
-    [1, 2, 3, 4].forEach(function(i) {
-      let tableHeader = document.createElement("th");
-      let input = document.createElement("input")
-      tableHeader.appendChild(input)
-      tableRow.appendChild(tableHeader);
-    });
 
-    let deleteButton = document.createElement('button')
-    deleteButton.innerHTML = "X";
-    deleteButton.onclick = function(){
-      tableRow.parentNode.removeChild(tableRow)
-    };
-
-    tableRow.appendChild(deleteButton);
-    table.appendChild(tableRow);
-    counter++;
-  };
-
+<script type="text/javascript" src="/javascript/script.js">
 </script>
