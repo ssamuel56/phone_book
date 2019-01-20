@@ -15,7 +15,7 @@ def add_a_user(username, password)
   if_user_exists = client.query("SELECT username FROM users WHERE users.username = '#{username}'")
 
   if if_user_exists.count == 0
-    client.query("INSERT INTO users (username, password) VALUES ('#{username}', '#{password}')")
+    client.query("INSERT INTO users (uuid, username, password) VALUES (UUID(), '#{username}', '#{password}')")
     return true
   else
     return false
