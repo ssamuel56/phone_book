@@ -33,6 +33,15 @@ def add_a_user(username, password)
   end
 end
 
+def user_id(username)
+  id = client.query(
+    "SELECT uuid FROM users WHERE users.username = '#{username}'"
+  )
+  id.each do |i|
+    return i["uuid"].to_s
+  end
+end
+
 def retrieve_password(username)
   password = client.query(
     "SELECT password FROM users WHERE users.username = '#{username}'"

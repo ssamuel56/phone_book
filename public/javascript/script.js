@@ -1,4 +1,4 @@
-let table = document.querySelector("table");
+let table = document.getElementById("modalTable");
 let counter = 0;
 
 function addContact() {
@@ -23,4 +23,16 @@ function addContact() {
   tableRow.appendChild(deleteButton);
   table.appendChild(tableRow);
   counter++;
+};
+
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("modalButton");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+};
+
+span.onclick = function() {
+  modal.style.display = "none";
 };

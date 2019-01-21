@@ -8,7 +8,8 @@ end
 
 post '/login' do
   if if_user_exists(params[:username]) && password_verification(retrieve_password(params[:username]), params[:password])
-    redirect '/main'
+    uuid = user_id(params[:username])
+    redirect '/main?uuid=' + uuid
   else
     redirect '/failed'
   end
@@ -33,18 +34,23 @@ post '/create' do
 end
 
 get '/main' do
-  erb :main
+  uuid = params[:uuid]
+  contacts = get_contacts(uuid).each_slice(4)
+  erb :main, locals: {uuid: uuid, contacts: contacts}
 end
 
 post '/add' do
-  params[:name].each_index do |i|
-    add_contacts(
-    "2f5121b0-1d92-11e9-bf14-704d7be5c7ab",
-    params[:name][i],
-    params[:number][i],
-    params[:address][i],
-    params[:comment][i],
-    )
+  uuid = params[:uuid]
+  if params[:name]
+    params[:name].each_index do |i|
+      add_contacts(
+      uuid,
+      params[:name][i],
+      params[:number][i],
+      params[:address][i],
+      params[:comment][i],
+      )
+    end
   end
-  p get_contacts("2f5121b0-1d92-11e9-bf14-704d7be5c7ab")
+  redirect '/main?uuid=' + uuid
 end
