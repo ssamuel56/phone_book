@@ -5,10 +5,10 @@ function addContact() {
   let tableRow = document.createElement("tr");
   tableRow.id = "table" + counter;
 
-  [1, 2, 3, 4].forEach(function(i) {
+  ["name", "number", "address", "comment"].forEach(function(i) {
     let tableHeader = document.createElement("th");
     let input = document.createElement("input");
-    input.name = "contacts[]"
+    input.name = i + "[]";
     input.required = "true";
     tableHeader.appendChild(input);
     tableRow.appendChild(tableHeader);

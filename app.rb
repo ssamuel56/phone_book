@@ -7,11 +7,7 @@ get '/' do
 end
 
 post '/login' do
-  password_hash = "$2a$10$VWw.FNQ5OO7mYxSlzbisVeexqgi4F5onOjpAAWr66ARyxuZDwRvBu"
-  temp_user_check = "User" == params[:username]
-  temp_user_pass_check = password_verification(password_hash, params[:password])
-
-  if temp_user_check && temp_user_pass_check
+  if if_user_exists(params[:username]) && password_verification(retrieve_password(params[:username]), params[:password])
     redirect '/main'
   else
     redirect '/failed'
@@ -28,7 +24,7 @@ get '/create' do
 end
 
 post '/create' do
-  if add_a_user(params[:username], params[:password])
+  if !if_user_exists(params[:username])
     add_a_user(params[:username], params[:password])
     redirect '/'
   else
@@ -41,5 +37,14 @@ get '/main' do
 end
 
 post '/add' do
-  p params
+  params[:name].each_index do |i|
+    add_contacts(
+    "2f5121b0-1d92-11e9-bf14-704d7be5c7ab",
+    params[:name][i],
+    params[:number][i],
+    params[:address][i],
+    params[:comment][i],
+    )
+  end
+  p get_contacts("2f5121b0-1d92-11e9-bf14-704d7be5c7ab")
 end
