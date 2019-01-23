@@ -20,4 +20,8 @@ class Test_sql_functions < Minitest::Test
     assert_equal(String, retrieve_password("User").class)
   end
 
+  def test_get_contacts
+    assert_equal(Array, get_contacts("2f5121b0-1d92-11e9-bf14-704d7be5c7ab").class)
+  end
+
 end
