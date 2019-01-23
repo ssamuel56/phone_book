@@ -12,4 +12,8 @@ class Test_sql_functions < Minitest::Test
     assert_equal(false, if_user_exists("B"))
   end
 
+  def test_user_id
+    assert_equal(Hash, user_id("User").class)
+  end
+
 end
