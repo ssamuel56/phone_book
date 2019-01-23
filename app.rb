@@ -25,8 +25,10 @@ get '/create' do
 end
 
 post '/create' do
-  if !if_user_exists(params[:username])
-    add_a_user(params[:username], params[:password])
+  usr_name = params[:username]
+  pass = params[:password]
+  if !if_user_exists(usr_name) && usr_name.match(/^a-zA-Z0-9/) && pass.match(/^a-zA-Z0-9/)
+    add_a_user(usr_name, pass)
     redirect '/'
   else
     redirect '/create?valid=' + "false"
@@ -41,15 +43,16 @@ end
 
 post '/add' do
   uuid = params[:uuid]
+  names = params[:name]
   if params[:name]
-    params[:name].each_index do |i|
-      unless duplicate_contact(uuid, params[:name][i])
+    names.each_index do |i|
+      unless duplicate_contact(uuid, names[i])
         add_contacts(
           uuid,
-          params[:name][i],
-          params[:number][i],
-          params[:address][i],
-          params[:comment][i],
+          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
+          names[i].gsub(/[^a-zA-Z0-9-]/, ''),
+          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
+          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
         )
       end
     end
