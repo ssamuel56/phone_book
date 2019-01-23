@@ -7,4 +7,8 @@ class Test_sql_functions < Minitest::Test
     assert_equal(Mysql2::Client, client().class)
   end
 
+  def test_if_user_exists
+    assert_equal(true, if_user_exists("User"))
+  end
+
 end
