@@ -24,4 +24,11 @@ class Test_sql_functions < Minitest::Test
     assert_equal(Array, get_contacts("2f5121b0-1d92-11e9-bf14-704d7be5c7ab").class)
   end
 
+  def test_for_duplicate_contact
+    assert_equal(
+      false,
+      duplicate_contact("2f5121b0-1d92-11e9-bf14-704d7be5c7ab", "Samuel")
+    )
+  end
+
 end
