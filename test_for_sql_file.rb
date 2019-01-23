@@ -9,6 +9,7 @@ class Test_sql_functions < Minitest::Test
 
   def test_if_user_exists
     assert_equal(true, if_user_exists("User"))
+    assert_equal(false, if_user_exists("B"))
   end
 
 end
