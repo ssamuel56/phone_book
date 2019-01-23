@@ -16,4 +16,8 @@ class Test_sql_functions < Minitest::Test
     assert_equal(String, user_id("User").class)
   end
 
+  def test_retrieve_password
+    assert_equal(String, retrieve_password("User").class)
+  end
+
 end
