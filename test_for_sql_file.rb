@@ -13,7 +13,7 @@ class Test_sql_functions < Minitest::Test
   end
 
   def test_user_id
-    assert_equal(Hash, user_id("User").class)
+    assert_equal(String, user_id("User").class)
   end
 
 end
