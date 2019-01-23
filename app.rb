@@ -43,13 +43,25 @@ post '/add' do
   uuid = params[:uuid]
   if params[:name]
     params[:name].each_index do |i|
-      add_contacts(
-      uuid,
-      params[:name][i],
-      params[:number][i],
-      params[:address][i],
-      params[:comment][i],
-      )
+      unless duplicate_contact(uuid, params[:name][i])
+        add_contacts(
+          uuid,
+          params[:name][i],
+          params[:number][i],
+          params[:address][i],
+          params[:comment][i],
+        )
+      end
+    end
+  end
+  redirect '/main?uuid=' + uuid
+end
+
+post '/delete' do
+  uuid = params[:uuid]
+  if params[:toDelete]
+    params[:toDelete].each do |contact|
+      delete_contact(uuid, contact)
     end
   end
   redirect '/main?uuid=' + uuid

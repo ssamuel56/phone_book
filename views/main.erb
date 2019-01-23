@@ -2,7 +2,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h1>Add Contacts</h1>
-    <button type="button" name="add" onclick="addContact()">Add Contact</button>
+    <h2>Please note duplicate names will not be added</h2>
     <form class="" action="/add" method="post">
     <table id="modalTable">
       <tr>
@@ -12,6 +12,7 @@
         <th>Comment</th>
       </tr>
     </table>
+    <button type="button" name="add" onclick="addContact()">Add Contact</button>
     <input type="hidden" name="uuid" value="<%= uuid%>">
     <input type="submit" name="" value="submit">
     </form>
@@ -20,15 +21,14 @@
 
 <h1>Your Contacts</h1>
 
-<button type="button" name="add" id="modalButton">Add Contacts</button>
-
-<form class="" action="index.html" method="post">
+<form class="" action="/delete" method="post">
   <table>
     <tr>
       <th>Name</th>
       <th>Number</th>
       <th>address</th>
       <th>Comment</th>
+      <th>Delete</th>
     </tr>
     <% contacts.each do |i|%>
       <tr>
@@ -36,10 +36,12 @@
         <th><%= i[1]%></th>
         <th><%= i[2]%></th>
         <th><%= i[3]%></th>
-        <th><input type="checkbox" name="toDelete" value="<%= i[0]%>"></th>
+        <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
+        <th><button type="button" name="button">Edit</button></th>
       </tr>
     <% end%>
   </table>
+  <button type="button" name="add" id="modalButton">Add Contacts</button>
   <input type="submit" name="" value="Delete Selected">
   <input type="hidden" name="uuid" value="<%= uuid%>">
 </form>

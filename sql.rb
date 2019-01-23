@@ -16,11 +16,7 @@ def if_user_exists(username)
   if_user_exists = client.query(
     "SELECT username FROM users WHERE users.username = '#{username}'"
   )
-  if if_user_exists.count == 0
-    return false
-  else
-    return true
-  end
+  return if_user_exists.count > 0
 end
 
 def add_a_user(username, password)
@@ -51,13 +47,6 @@ def retrieve_password(username)
   end
 end
 
-def add_contacts(user_id, name, number, address, comment)
-  client.query(
-    "INSERT INTO contacts (uuid, name, number, address, comment)
-    VALUES ('#{user_id}', '#{name}', '#{number}', '#{address}', '#{comment}')"
-  )
-end
-
 def get_contacts(user_id)
   contacts = client.query(
     "SELECT * FROM contacts WHERE uuid = '#{user_id}'"
@@ -70,4 +59,28 @@ def get_contacts(user_id)
     ary << contact["comment"]
   end
   return ary
+end
+
+def duplicate_contact(user_id, name)
+  user = client.query(
+    "SELECT name FROM contacts
+    WHERE contacts.name = '#{name}'
+    AND contacts.uuid = '#{user_id}'"
+  )
+  return user.count > 0
+end
+
+def add_contacts(user_id, name, number, address, comment)
+  client.query(
+    "INSERT INTO contacts (uuid, name, number, address, comment)
+    VALUES ('#{user_id}', '#{name}', '#{number}', '#{address}', '#{comment}')"
+  )
+end
+
+def delete_contact(user_id, name)
+  client.query(
+    "DELETE FROM contacts
+    WHERE contacts.name = '#{name}'
+    AND contacts.uuid = '#{user_id}'"
+  )
 end
