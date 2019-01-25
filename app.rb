@@ -28,9 +28,7 @@ end
 post '/create' do
   usr_name = params[:username]
   pass = params[:password]
-  p pass == /\A[a-z0-9]+\Z/i
-  p usr_name == /\A[a-z0-9]+\Z/i
-  if !if_user_exists(usr_name) && /[^a-zA-Z0-9\s]/ === usr_name && /[^a-zA-Z0-9\s]/ === pass
+  if !if_user_exists(usr_name) && /\A[A-Za-z0-9]+\Z/ === usr_name && /\A[A-Za-z0-9]+\Z/ === pass
     add_a_user(usr_name, pass)
     redirect '/?created=' + "true"
   else
