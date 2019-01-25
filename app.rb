@@ -3,7 +3,8 @@ require_relative 'users.rb'
 require_relative 'sql.rb'
 
 get '/' do
-  erb :landing
+  acct_created = params[:created] ? true : false
+  erb :landing, locals: {created: acct_created}
 end
 
 post '/login' do
@@ -27,9 +28,11 @@ end
 post '/create' do
   usr_name = params[:username]
   pass = params[:password]
-  if !if_user_exists(usr_name) && usr_name.match(/^a-zA-Z0-9/) && pass.match(/^a-zA-Z0-9/)
+  p pass == /\A[a-z0-9]+\Z/i
+  p usr_name == /\A[a-z0-9]+\Z/i
+  if !if_user_exists(usr_name) && /[^a-zA-Z0-9\s]/ === usr_name && /[^a-zA-Z0-9\s]/ === pass
     add_a_user(usr_name, pass)
-    redirect '/'
+    redirect '/?created=' + "true"
   else
     redirect '/create?valid=' + "false"
   end

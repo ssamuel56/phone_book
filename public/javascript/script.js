@@ -15,10 +15,10 @@ function addContact() {
     tableRow.appendChild(tableHeader);
   });
 
-  let deleteButton = document.createElement('button')
+  let deleteButton = document.createElement('button');
   deleteButton.innerHTML = "X";
   deleteButton.onclick = function(){
-    tableRow.parentNode.removeChild(tableRow)
+    tableRow.parentNode.removeChild(tableRow);
   };
 
   tableRow.appendChild(deleteButton);
