@@ -45,6 +45,7 @@ get '/main' do
 end
 
 post '/add' do
+  p params
   uuid = params[:uuid]
   names = params[:name]
   if names
@@ -53,9 +54,9 @@ post '/add' do
         add_contacts(
           uuid,
           names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
-          names[i].gsub(/[^a-zA-Z0-9-]/, ''),
-          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
-          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
+          params[:number][i].gsub(/[^a-zA-Z0-9-]/, ''),
+          params[:address][i].gsub(/[^a-zA-Z0-9\s]/, ''),
+          params[:comment][i].gsub(/[^a-zA-Z0-9\s]/, ''),
         )
       end
     end

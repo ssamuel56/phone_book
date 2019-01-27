@@ -26,9 +26,10 @@ function addContact() {
   counter++;
 };
 
-var modal = document.getElementById('myModal');
-var btn = document.getElementById("modalButton");
-var span = document.getElementsByClassName("close")[0];
+
+let modal = document.getElementById('myModal');
+let btn = document.getElementById("modalButton");
+let span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function() {
   modal.style.display = "block";
