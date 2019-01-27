@@ -8,8 +8,10 @@ get '/' do
 end
 
 post '/login' do
-  if if_user_exists(params[:username]) && password_verification(retrieve_password(params[:username]), params[:password])
-    uuid = user_id(params[:username])
+  usr_name = params[:username]
+  pass = params[:password]
+  if if_user_exists(usr_name) && password_verification(retrieve_password(usr_name), pass)
+    uuid = user_id(usr_name)
     redirect '/main?uuid=' + uuid
   else
     redirect '/failed'
@@ -45,7 +47,7 @@ end
 post '/add' do
   uuid = params[:uuid]
   names = params[:name]
-  if params[:name]
+  if names
     names.each_index do |i|
       unless duplicate_contact(uuid, names[i])
         add_contacts(
@@ -63,8 +65,9 @@ end
 
 post '/delete' do
   uuid = params[:uuid]
-  if params[:toDelete]
-    params[:toDelete].each do |contact|
+  to_del = params[:toDelete]
+  if to_del
+    to_del.each do |contact|
       delete_contact(uuid, contact)
     end
   end
