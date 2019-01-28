@@ -1,6 +1,6 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close1">&times;</span>
     <h1>Add Contacts</h1>
     <h2>Please note duplicate names will not be added</h2>
     <form class="" action="/add" method="post">
@@ -18,6 +18,21 @@
     </form>
   </div>
 </div>
+
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close2">&times;</span>
+    <h1>Edit Contact</h1>
+    <form action="/edit" method="post">
+      <div id="editContact">
+      </div>
+      <input type="hidden" name="uuid" value="<%= uuid%>">
+      <input type="submit" name="" value="submit">
+    </form>
+  </div>
+</div>
+
 
 <h1>Your Contacts</h1>
 
@@ -37,7 +52,10 @@
         <th><%= i[2]%></th>
         <th><%= i[3]%></th>
         <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
-        <th><button type="button" name="button">Edit</button></th>
+        <th>
+          <input type="button" name="button" value="Edit"
+          onClick="stuff('<%= i.join(",")%>')">
+        </th>
       </tr>
     <% end%>
   </table>

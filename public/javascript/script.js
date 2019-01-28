@@ -15,7 +15,7 @@ function addContact() {
     tableRow.appendChild(tableHeader);
   });
 
-  let deleteButton = document.createElement('button');
+  let deleteButton = document.createElement("button");
   deleteButton.innerHTML = "X";
   deleteButton.onclick = function(){
     tableRow.parentNode.removeChild(tableRow);
@@ -27,14 +27,39 @@ function addContact() {
 };
 
 
-let modal = document.getElementById('myModal');
+let modal = document.getElementById("myModal");
 let btn = document.getElementById("modalButton");
-let span = document.getElementsByClassName("close")[0];
+let span1 = document.getElementsByClassName("close1")[0];
 
 btn.onclick = function() {
   modal.style.display = "block";
 };
 
-span.onclick = function() {
+span1.onclick = function() {
   modal.style.display = "none";
+};
+
+
+function stuff(array) {
+  let ary = array.split(",");
+  let editModal = document.getElementById("editModal");
+  let span2 = document.getElementsByClassName("close2")[0];
+  let editContact = document.getElementById("editContact");
+
+  while (editContact.firstChild) {
+    editContact.removeChild(editContact.firstChild);
+  };
+
+  editModal.style.display = "block";
+
+  span2.onclick = function() {
+    editModal.style.display = "none";
+  };
+
+  ary.forEach(function(i){
+    field = document.createElement("input");
+    field.name = "toChange[]";
+    editContact.appendChild(field);
+    field.value = i;
+  });
 };
