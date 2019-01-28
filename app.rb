@@ -68,7 +68,7 @@ post '/add' do
 end
 
 post '/edit' do
-  contact = params[:toChange]
+  contact = params[:toChange].each {|x| x.gsub(/[^a-zA-Z0-9-]/, '')}
   uuid = params[:uuid]
   if (contact[0] == contact[1]) || (!duplicate_contact(uuid, contact[1]))
     edit_contact(uuid, contact)

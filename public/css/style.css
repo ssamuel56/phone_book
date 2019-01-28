@@ -7,6 +7,16 @@ table {
   padding-bottom: 2em;
 }
 
+.credentialsContainer {
+  justify-content: space-between;
+}
+
+.credentialsInner {
+  display: inline-block;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
 .modal {
  display: none;
  position: fixed;
