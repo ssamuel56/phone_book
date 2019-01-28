@@ -37,4 +37,9 @@ class Test_sql_functions < Minitest::Test
     assert_nil(edit_contact(uuid, contact))
   end
 
+  def  test_verify_uuid
+    uuid = "2f5121b0-1d92-11e9-bf14-456d7be5c7ab"
+    assert_equal(false, verify_uuid(uuid))
+  end
+
 end
