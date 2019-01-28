@@ -32,7 +32,9 @@ class Test_sql_functions < Minitest::Test
   end
 
   def test_for_update_contact
-    refute_empty('', edit_contact().class)
+    uuid = "8f52eac4-2040-11e9-bf14-704d7be5c7ab"
+    contact = ["sam", "1234567890", "162 Doggo st", "Is me"]
+    assert_nil(edit_contact(uuid, contact))
   end
 
 end

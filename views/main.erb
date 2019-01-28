@@ -24,6 +24,15 @@
   <div class="modal-content">
     <span class="close2">&times;</span>
     <h1>Edit Contact</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>address</th>
+        <th>Comment</th>
+        <th>Delete</th>
+      </tr>
+      </table>
     <form action="/edit" method="post">
       <div id="editContact">
       </div>
@@ -54,7 +63,7 @@
         <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
         <th>
           <input type="button" name="button" value="Edit"
-          onClick="stuff('<%= i.join(",")%>')">
+          onClick="edit('<%= i.join(",")%>')">
         </th>
       </tr>
     <% end%>

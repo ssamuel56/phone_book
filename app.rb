@@ -45,7 +45,6 @@ get '/main' do
 end
 
 post '/add' do
-  p params
   uuid = params[:uuid]
   names = params[:name]
   if names
@@ -67,6 +66,9 @@ end
 post '/edit' do
   contact = params[:toChange]
   uuid = params[:uuid]
+  if (contact[0] == contact[1]) || (!duplicate_contact(uuid, contact[1]))
+    edit_contact(uuid, contact)
+  end
   redirect '/main?uuid=' + uuid
 end
 

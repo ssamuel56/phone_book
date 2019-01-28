@@ -77,8 +77,13 @@ def add_contacts(user_id, name, number, address, comment)
   )
 end
 
-def edit_contact()
-
+def edit_contact(uuid, contact)
+  client.query(
+    "UPDATE contacts
+    SET name = '#{contact[1]}', number = '#{contact[2]}',
+    address = '#{contact[3]}', comment = '#{contact[4]}'
+    WHERE uuid = '#{uuid}' AND contacts.name = '#{contact[0]}'"
+  )
 end
 
 def delete_contact(user_id, name)

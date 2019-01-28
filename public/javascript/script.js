@@ -40,7 +40,8 @@ span1.onclick = function() {
 };
 
 
-function stuff(array) {
+
+function edit(array) {
   let ary = array.split(",");
   let editModal = document.getElementById("editModal");
   let span2 = document.getElementsByClassName("close2")[0];
@@ -56,10 +57,16 @@ function stuff(array) {
     editModal.style.display = "none";
   };
 
+  let field = document.createElement("input");
+  field.name = "toChange[]";
+  field.type = "hidden";
+  field.value = ary[0];
+  editContact.appendChild(field);
+
   ary.forEach(function(i){
-    field = document.createElement("input");
+    let field = document.createElement("input");
     field.name = "toChange[]";
-    editContact.appendChild(field);
     field.value = i;
+    editContact.appendChild(field);
   });
 };
