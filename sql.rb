@@ -38,6 +38,15 @@ def user_id(username)
   end
 end
 
+def verify_uuid(uuid)
+  uuid = client.query(
+    "SELECT *
+    FROM users
+    WHERE uuid = '#{uuid}'"
+  )
+  return uuid.count > 0
+end
+
 def retrieve_password(username)
   password = client.query(
     "SELECT password FROM users WHERE users.username = '#{username}'"
