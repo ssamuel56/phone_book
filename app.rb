@@ -40,14 +40,18 @@ end
 
 get '/main' do
   uuid = params[:uuid]
-  contacts = get_contacts(uuid).each_slice(4)
-  erb :main, locals: {uuid: uuid, contacts: contacts}
+  if verify_uuid(uuid)
+    contacts = get_contacts(uuid).each_slice(4)
+    erb :main, locals: {uuid: uuid, contacts: contacts}
+  else
+    redirect '/'
+  end
 end
 
 post '/add' do
   uuid = params[:uuid]
   names = params[:name]
-  if names
+  if names && verify_uuid(uuid)
     names.each_index do |i|
       unless duplicate_contact(uuid, names[i])
         add_contacts(
