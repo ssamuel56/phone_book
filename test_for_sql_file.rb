@@ -31,4 +31,8 @@ class Test_sql_functions < Minitest::Test
     )
   end
 
+  def test_for_update_contact
+    refute_empty('', edit_contact().class)
+  end
+
 end

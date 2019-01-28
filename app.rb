@@ -64,6 +64,12 @@ post '/add' do
   redirect '/main?uuid=' + uuid
 end
 
+post '/edit' do
+  contact = params[:toChange]
+  uuid = params[:uuid]
+  redirect '/main?uuid=' + uuid
+end
+
 post '/delete' do
   uuid = params[:uuid]
   to_del = params[:toDelete]

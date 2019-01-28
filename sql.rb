@@ -77,6 +77,10 @@ def add_contacts(user_id, name, number, address, comment)
   )
 end
 
+def edit_contact()
+
+end
+
 def delete_contact(user_id, name)
   client.query(
     "DELETE FROM contacts
