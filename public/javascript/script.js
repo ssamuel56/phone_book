@@ -30,21 +30,25 @@ function addContact() {
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("modalButton");
 let span1 = document.getElementsByClassName("close1")[0];
+let span2 = document.getElementsByClassName("close2")[0];
 
 btn.onclick = function() {
   modal.style.display = "block";
+  addContact();
 };
 
 span1.onclick = function() {
   modal.style.display = "none";
 };
 
+span2.onclick = function() {
+  editModal.style.display = "none";
+};
 
 
 function edit(array) {
   let ary = array.split(",");
   let editModal = document.getElementById("editModal");
-  let span2 = document.getElementsByClassName("close2")[0];
   let editContact = document.getElementById("editContact");
 
   while (editContact.firstChild) {
@@ -53,22 +57,20 @@ function edit(array) {
 
   editModal.style.display = "block";
 
-  span2.onclick = function() {
-    editModal.style.display = "none";
-  };
-
-  let field = document.createElement("input");
-  field.name = "toChange[]";
-  field.type = "hidden";
-  field.value = ary[0];
-  editContact.appendChild(field);
+  let input = document.createElement("input");
+  input.name = "toChange[]";
+  input.type = "hidden";
+  input.value = ary[0];
+  editContact.appendChild(input);
 
   ary.forEach(function(i){
-    let field = document.createElement("input");
+    let input = document.createElement("input");
     let header = document.createElement("th");
-    field.name = "toChange[]";
-    field.value = i;
-    header.appendChild(field);
+    input.name = "toChange[]";
+    input.value = i;
+    input.required = "true";
+    input.pattern = "[a-zA-Z0-9 /s -]{3,20}";
+    header.appendChild(input);
     editContact.appendChild(header);
   });
 };

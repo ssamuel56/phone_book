@@ -24,18 +24,16 @@
   <div class="modal-content">
     <span class="close2">&times;</span>
     <h1>Edit Contact</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Number</th>
-        <th>address</th>
-        <th>Comment</th>
-      </tr>
-      <tr id="editContact">
-
-      </tr>
-      </table>
     <form action="/edit" method="post">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>address</th>
+          <th>Comment</th>
+        </tr>
+        <tr id="editContact"></tr>
+      </table>
       <input type="hidden" name="uuid" value="<%= uuid%>">
       <input type="submit" name="" value="submit">
     </form>
@@ -68,9 +66,12 @@
       </tr>
     <% end%>
   </table>
-  <button type="button" name="add" id="modalButton">Add Contacts</button>
-  <input type="submit" name="" value="Delete Selected">
+  <button type="button" name="add" id="modalButton">
+    Add Contacts
+  </button>
+  <input type="submit" value="Delete Selected">
   <input type="hidden" name="uuid" value="<%= uuid%>">
 </form>
+
 
 <script src="/javascript/script.js"></script>

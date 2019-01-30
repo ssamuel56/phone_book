@@ -7,7 +7,16 @@
   </head>
   <body>
 
-    <h1>Personal Phonebook</h1>
+    <div id="header">
+      <div class="innerHeader">
+        <h1>Personal Phonebook</h1>
+      </div>
+      <div class="logOut">
+        <% if request.path_info == '/main'%>
+          <a href="/">Log Out</a>
+        <% end%>
+      </div>
+    </div>
 
     <%= yield%>
 
