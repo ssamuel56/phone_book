@@ -10,7 +10,7 @@ function addContact() {
     let input = document.createElement("input");
     input.name = i + "[]";
     input.required = "true";
-    input.pattern = "[a-zA-Z0-9 /s -]{3,20}";
+    input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
     tableHeader.appendChild(input);
     tableRow.appendChild(tableHeader);
   });
@@ -69,7 +69,7 @@ function edit(array) {
     input.name = "toChange[]";
     input.value = i;
     input.required = "true";
-    input.pattern = "[a-zA-Z0-9 /s -]{3,20}";
+    input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
     header.appendChild(input);
     editContact.appendChild(header);
   });
