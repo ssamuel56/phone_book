@@ -1,6 +1,6 @@
 require 'mysql2'
 require_relative 'users.rb'
-load 'local_env.rb'
+load 'local_env.rb' if File.exist?('local_env.rb')
 
 def client
   Mysql2::Client.new(
