@@ -65,8 +65,10 @@ function edit(array) {
 
   ary.forEach(function(i){
     let field = document.createElement("input");
+    let header = document.createElement("th");
     field.name = "toChange[]";
     field.value = i;
-    editContact.appendChild(field);
+    header.appendChild(field);
+    editContact.appendChild(header);
   });
 };
