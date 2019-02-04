@@ -8,6 +8,7 @@ function addContact() {
   ["name", "number", "address", "comment"].forEach(function(i) {
     let tableHeader = document.createElement("th");
     let input = document.createElement("input");
+    input.type = "text";
     input.name = i + "[]";
     input.required = "true";
     input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
@@ -72,8 +73,9 @@ function edit(array) {
   ary.forEach(function(i){
     let input = document.createElement("input");
     let header = document.createElement("th");
+
     input.name = "toChange[]";
-    input.value = i;
+    input.type = "text";
     input.required = "true";
     input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
     header.appendChild(input);

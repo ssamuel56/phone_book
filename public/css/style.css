@@ -31,7 +31,7 @@ hr {
   padding-bottom: 2.5em;
 }
 
-.credentialsContainer input[type="text"], input[type="password"]
+input[type="text"], input[type="password"]
 {
   border: none;
   border-bottom: 1px solid white;
