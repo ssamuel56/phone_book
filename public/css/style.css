@@ -38,6 +38,8 @@ hr {
 input[type="text"], input[type="password"]
 {
   border: none;
+  font-size: .85em;
+  color: white;
   border-bottom: 1px solid white;
   background:transparent;
 }
@@ -85,6 +87,10 @@ form > input, button{
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+.modal > input{
+  color: white;
+  font-size: .9em;
 }
 
 .modal > table {

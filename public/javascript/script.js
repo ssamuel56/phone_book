@@ -32,19 +32,22 @@ let modal = document.getElementById("myModal");
 let btn = document.getElementById("modalButton");
 let span1 = document.getElementsByClassName("close1")[0];
 let span2 = document.getElementsByClassName("close2")[0];
-let content = document.getElementById("content")
+let hidden = document.getElementById("hidden")
 
 btn.onclick = function() {
   modal.style.display = "block";
+  hidden.style.visibility = "hidden";
   addContact();
 };
 
 span1.onclick = function() {
   modal.style.display = "none";
+  hidden.style.visibility = "visible";
 };
 
 span2.onclick = function() {
   editModal.style.display = "none";
+  hidden.style.visibility = "visible";
 };
 
 
@@ -52,13 +55,14 @@ function edit(array) {
   let ary = array.split(",");
   let editModal = document.getElementById("editModal");
   let editContact = document.getElementById("editContact");
+  let hidden = document.getElementById("hidden")
 
   while (editContact.firstChild) {
     editContact.removeChild(editContact.firstChild);
   };
 
   editModal.style.display = "block";
-  // content.style.visibility = "hidden";
+  hidden.style.visibility = "hidden";
 
   let input = document.createElement("input");
   input.name = "toChange[]";
@@ -69,9 +73,9 @@ function edit(array) {
   ary.forEach(function(i){
     let input = document.createElement("input");
     let header = document.createElement("th");
-
-    input.name = "toChange[]";
     input.type = "text";
+    input.name = "toChange[]";
+    input.value = i;
     input.required = "true";
     input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
     header.appendChild(input);

@@ -4,17 +4,17 @@
     <h1>Add Contacts</h1>
     <h2>Please note duplicate names will not be added</h2>
     <form class="" action="/add" method="post">
-    <table id="modalTable">
-      <tr>
-        <th>Name</th>
-        <th>Number</th>
-        <th>address</th>
-        <th>Comment</th>
-      </tr>
-    </table>
-    <button type="button" name="add" onclick="addContact()">Add Contact</button>
-    <input type="hidden" name="uuid" value="<%= uuid%>">
-    <input type="submit" name="" value="submit">
+      <table id="modalTable">
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>address</th>
+          <th>Comment</th>
+        </tr>
+      </table>
+      <button type="button" name="add" onclick="addContact()">Add Contact</button>
+      <input type="hidden" name="uuid" value="<%= uuid%>">
+      <input type="submit" name="" value="submit">
     </form>
   </div>
 </div>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div id="content">
+<div id="hidden">
 
   <h1>Your Contacts</h1>
 
