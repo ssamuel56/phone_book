@@ -19,7 +19,6 @@
   </div>
 </div>
 
-
 <div id="editModal" class="modal">
   <div class="modal-content">
     <span class="close2">&times;</span>
@@ -40,38 +39,41 @@
   </div>
 </div>
 
+<div id="content">
 
-<h1>Your Contacts</h1>
+  <h1>Your Contacts</h1>
 
-<form class="contactTable" action="/delete" method="post">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>address</th>
-      <th>Comment</th>
-      <th>Delete</th>
-    </tr>
-    <% contacts.each do |i|%>
+  <form class="contactTable" action="/delete" method="post">
+    <table>
       <tr>
-        <th><%= i[0]%></th>
-        <th><%= i[1]%></th>
-        <th><%= i[2]%></th>
-        <th><%= i[3]%></th>
-        <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
-        <th>
-          <input type="button" name="button" value="Edit"
-          onClick="edit('<%= i.join(",")%>')">
-        </th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>address</th>
+        <th>Comment</th>
+        <th>Delete</th>
       </tr>
-    <% end%>
-  </table>
-  <button type="button" name="add" id="modalButton">
-    Add Contacts
-  </button>
-  <input type="submit" value="Delete Selected">
-  <input type="hidden" name="uuid" value="<%= uuid%>">
-</form>
+      <% contacts.each do |i|%>
+        <tr>
+          <th><%= i[0]%></th>
+          <th><%= i[1]%></th>
+          <th><%= i[2]%></th>
+          <th><%= i[3]%></th>
+          <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
+          <th>
+            <input type="button" name="button" value="Edit"
+            onClick="edit('<%= i.join(",")%>')">
+          </th>
+        </tr>
+      <% end%>
+    </table>
+    <button type="button" name="add" id="modalButton">
+      Add Contacts
+    </button>
+    <input type="submit" value="Delete Selected">
+    <input type="hidden" name="uuid" value="<%= uuid%>">
+  </form>
+
+</div>
 
 
 <script src="/javascript/script.js"></script>
