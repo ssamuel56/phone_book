@@ -36,18 +36,15 @@ let content = document.getElementById("content")
 
 btn.onclick = function() {
   modal.style.display = "block";
-  content.style.visibility = "hidden";
   addContact();
 };
 
 span1.onclick = function() {
   modal.style.display = "none";
-  content.style.visibility = "visible";
 };
 
 span2.onclick = function() {
   editModal.style.display = "none";
-  content.style.visibility = "visible";
 };
 
 
@@ -55,14 +52,13 @@ function edit(array) {
   let ary = array.split(",");
   let editModal = document.getElementById("editModal");
   let editContact = document.getElementById("editContact");
-  let content = document.getElementById("contact")
 
   while (editContact.firstChild) {
     editContact.removeChild(editContact.firstChild);
   };
 
   editModal.style.display = "block";
-  content.style.visibility = "hidden";
+  // content.style.visibility = "hidden";
 
   let input = document.createElement("input");
   input.name = "toChange[]";
