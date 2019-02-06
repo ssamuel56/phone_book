@@ -27,6 +27,15 @@ hr {
   width: 65%;
 }
 
+button:hover, input[type="checkbox"]
+{
+  cursor: pointer;
+}
+
+a {
+  color: white;
+}
+
 .login {
   padding-bottom: 2.5em;
 }

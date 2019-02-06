@@ -60,8 +60,9 @@
           <th><%= i[3]%></th>
           <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
           <th>
-            <input type="button" name="button" value="Edit"
-            onClick="edit('<%= i.join(",")%>')">
+            <button type="button" name="button"
+              onClick="edit('<%= i.join(",")%>')">Edit
+            </button>
           </th>
         </tr>
       <% end%>
@@ -69,7 +70,7 @@
     <button type="button" name="add" id="modalButton">
       Add Contacts
     </button>
-    <input type="submit" value="Delete Selected">
+    <button type="submit">Delete Selected</button>
     <input type="hidden" name="uuid" value="<%= uuid%>">
   </form>
 
