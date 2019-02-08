@@ -14,7 +14,7 @@
       </table>
       <button type="button" name="add" onclick="addContact()">Add Contact</button>
       <input type="hidden" name="uuid" value="<%= uuid%>">
-      <input type="submit" name="" value="submit">
+      <button type="submit">submit</button>
     </form>
   </div>
 </div>
@@ -58,11 +58,11 @@
           <th><%= i[1]%></th>
           <th><%= i[2]%></th>
           <th><%= i[3]%></th>
-          <th><input type="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
+          <th><input type="checkbox" id="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
           <th>
-            <button type="button" name="button"
-              onClick="edit('<%= i.join(",")%>')">Edit
-            </button>
+          <button type="button" name="button"
+            onClick="edit('<%= i.join(",")%>')">Edit
+          </button>
           </th>
         </tr>
       <% end%>
