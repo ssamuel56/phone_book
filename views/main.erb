@@ -58,11 +58,14 @@
           <th><%= i[1]%></th>
           <th><%= i[2]%></th>
           <th><%= i[3]%></th>
-          <th><input type="checkbox" id="checkbox" name="toDelete[]" value="<%= i[0]%>"></th>
+          <th class="checkbox">
+            <input type="checkbox" id="<%= i[0]%>" name="toDelete[]" value="<%= i[0]%>">
+            <label for="<%= i[0]%>"></label>
+          </th>
           <th>
-          <button type="button" name="button"
-            onClick="edit('<%= i.join(",")%>')">Edit
-          </button>
+            <button type="button" name="button"
+              onClick="edit('<%= i.join(",")%>')">Edit
+            </button>
           </th>
         </tr>
       <% end%>
