@@ -32,7 +32,7 @@ hr {
   border-top: 1px solid white;
 }
 
-button:hover, input[type="checkbox"]
+button:hover, label:hover
 {
   cursor: pointer;
 }
@@ -46,7 +46,6 @@ a {
 }
 
 .login > input {
-  width:
 }
 
 input[type="text"], input[type="password"]
@@ -81,7 +80,7 @@ form > input, button{
 }
 
 .checkbox input[type="checkbox"] {
-    opacity: 0;
+    visibility: hidden;
 }
 
 .checkbox label {
