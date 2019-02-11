@@ -10,7 +10,10 @@ end
 post '/login' do
   usr_name = params[:username]
   pass = params[:password]
-  if if_user_exists(usr_name) && password_verification(retrieve_password(usr_name), pass)
+  if if_user_exists(usr_name) &&
+      password_verification(retrieve_password(usr_name), pass) &&
+      /\A[A-Za-z0-9]+\Z/ === usr_name &&
+      /\A[A-Za-z0-9]+\Z/ === pass
     uuid = user_id(usr_name)
     redirect '/main?uuid=' + uuid
   else
@@ -30,7 +33,9 @@ end
 post '/create' do
   usr_name = params[:username]
   pass = params[:password]
-  if !if_user_exists(usr_name) && /\A[A-Za-z0-9]+\Z/ === usr_name && /\A[A-Za-z0-9]+\Z/ === pass
+  if !if_user_exists(usr_name) &&
+      /\A[A-Za-z0-9]+\Z/ === usr_name &&
+      /\A[A-Za-z0-9]+\Z/ === pass
     add_a_user(usr_name, pass)
     redirect '/?created=' + "true"
   else
