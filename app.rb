@@ -56,15 +56,16 @@ end
 post '/add' do
   uuid = params[:uuid]
   names = params[:name]
+  p names
   if names && verify_uuid(uuid)
     names.each_index do |i|
-      unless duplicate_contact(uuid, names[i])
+      unless duplicate_contact(uuid, client.escape(names[i]))
         add_contacts(
           uuid,
-          names[i].gsub(/[^a-zA-Z0-9\s]/, ''),
-          params[:number][i].gsub(/[^a-zA-Z0-9-]/, ''),
-          params[:address][i].gsub(/[^a-zA-Z0-9\s]/, ''),
-          params[:comment][i].gsub(/[^a-zA-Z0-9\s]/, ''),
+          client.escape(names[i].gsub(/[^a-zA-Z0-9\s\'\"]/, '')),
+          client.escape(params[:number][i].gsub(/[^a-zA-Z0-9\-\(\)]/, '')),
+          client.escape(params[:address][i].gsub(/[^a-zA-Z0-9\s\'\"]/, '')),
+          client.escape(params[:comment][i].gsub(/[^a-zA-Z0-9\s\'\"]/, ''))
         )
       end
     end
@@ -73,7 +74,10 @@ post '/add' do
 end
 
 post '/edit' do
-  contact = params[:toChange].each {|x| x.gsub(/[^a-zA-Z0-9-]/, '')}
+  p params
+  contact = params[:toChange].each {
+    |x| client.escape(x.gsub(/[^a-zA-Z0-9\- \(\)\'\"]/, ''))
+  }
   uuid = params[:uuid]
   if (contact[0] == contact[1]) || (!duplicate_contact(uuid, contact[1]))
     edit_contact(uuid, contact)

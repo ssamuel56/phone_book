@@ -11,7 +11,19 @@ function addContact() {
     input.type = "text";
     input.name = i + "[]";
     input.required = "true";
-    input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
+    input.pattern = "[a-zA-Z0-9 /s /( /) \' -]{3,35}";
+    input.title = "Leters, digits, dashes, parenthesis and spaces, 3-35 characters long"
+    // input.oninvalid = input.setCustomValidity("Only letters and numbers 3-35 characters");
+    // input.oninput = console.log(input.value)
+    // input.addEventListener('input', function() {
+    //   if (input.valid){
+    //     console.log("true");
+    //     input.setCustomValidity("");
+    //   } else {
+    //     input.setCustomValidity("Only letters and numbers 3-35 characters");
+    //   };
+    //   console.log(input.value)
+    // });
     tableHeader.appendChild(input);
     tableRow.appendChild(tableHeader);
   });
@@ -19,7 +31,7 @@ function addContact() {
   let deleteButton = document.createElement("button");
   deleteButton.innerHTML = "X";
   deleteButton.onclick = function(){
-    tableRow.parentNode.removeChild(tableRow);
+  tableRow.parentNode.removeChild(tableRow);
   };
 
   tableRow.appendChild(deleteButton);
@@ -53,6 +65,7 @@ span2.onclick = function() {
 
 function edit(array) {
   let ary = array.split(",");
+  console.log(ary)
   let editModal = document.getElementById("editModal");
   let editContact = document.getElementById("editContact");
   let hidden = document.getElementById("hidden")
@@ -77,7 +90,8 @@ function edit(array) {
     input.name = "toChange[]";
     input.value = i;
     input.required = "true";
-    input.pattern = "[a-zA-Z0-9 /s -]{3,35}";
+    input.pattern = "[a-zA-Z0-9 /s /( /) \' -]{3,35}";
+    input.title = "Leters, digits, dashes, parenthesis and spaces, 3-35 characters long"
     header.appendChild(input);
     editContact.appendChild(header);
   });

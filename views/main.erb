@@ -34,7 +34,7 @@
         <tr id="editContact"></tr>
       </table>
       <input type="hidden" name="uuid" value="<%= uuid%>">
-      <input type="submit" name="" value="submit">
+      <button type="submit" name="">submit</button>
     </form>
   </div>
 </div>
@@ -64,7 +64,7 @@
           </th>
           <th>
             <button type="button" name="button"
-              onClick="edit('<%= i.join(",")%>')">Edit
+              onClick="edit(`<%= i.join(',')%>`)">Edit
             </button>
           </th>
         </tr>
