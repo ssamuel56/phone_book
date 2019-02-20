@@ -62,10 +62,10 @@ post '/add' do
       unless duplicate_contact(uuid, client.escape(names[i]))
         add_contacts(
           uuid,
-          client.escape(names[i].gsub(/[^a-zA-Z0-9\s\'\"]/, '')),
+          client.escape(names[i].gsub(/[^a-zA-Z0-9\s\']/, '')),
           client.escape(params[:number][i].gsub(/[^a-zA-Z0-9\-\(\)]/, '')),
-          client.escape(params[:address][i].gsub(/[^a-zA-Z0-9\s\'\"]/, '')),
-          client.escape(params[:comment][i].gsub(/[^a-zA-Z0-9\s\'\"]/, ''))
+          client.escape(params[:address][i].gsub(/[^a-zA-Z0-9\s\']/, '')),
+          client.escape(params[:comment][i].gsub(/[^a-zA-Z0-9\s\']/, ''))
         )
       end
     end
